@@ -13,7 +13,7 @@
             $scope.getPosts = getPosts;
             $scope.rawPosts = angular.copy($scope.posts);
             $scope.page  = 1;
-            $scope.count = 15;
+            $scope.count = 18;
 
             this.$onInit = function () {console.log('m here')
                 $scope.getPosts();
