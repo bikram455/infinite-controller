@@ -1,8 +1,10 @@
-pre {{infiniteCtrl.dposts|json}}
 div.posts
     ul
-        li(ng-repeat="post in infiniteCtrl.dposts")
+        li(ng-repeat="post in dposts")
             span.post
                 span.post-head
                     label heading:
-                    |{{post.title}}
+                        p{{post.title}}
+                span.post-body
+                    label content:
+                        p{{post.body}}

@@ -11,21 +11,26 @@
             return{
                 restrict: 'E',
                 templateUrl:'directives/infinite-scroll/infinite-scroll.html',
-                controller: 'InfiniteScrollController as infiniteCtrl',
+                controller: 'InfiniteScrollController',
                 scope: {
                         posts: '='
                 },
-                link: linkDirective
+                link: linkDirective,
+                transclude: 'true'
             }
         }
         function linkDirective(scope, elem, attrs, ctrl) {
-            var mouseY = 125;
-            var page = 1;
-            elem.on('mousewheel', function (e) {console.log(e.deltaY)
-                if(e.deltaY > (page * mouseY)){
-                    ++page;
+
+            var scrollCount = 0;
+            elem.on('mousewheel', function (e) {console.log()
+                if(e.deltaY > 0){
+                    ++scrollCount;
+                }
+
+                if(scrollCount == 6){
                     scope.getPosts();
-                    console.log('fetch new page', e.deltaY, (page * mouseY));
+                    scope.$digest();
+                    scrollCount = 0;
                 }
             });
         }

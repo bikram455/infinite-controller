@@ -5,25 +5,25 @@
         angular.module('InfiniteScroll.Directives')
             .controller('InfiniteScrollController', InfiniteScrollController);
 
-        InfiniteScrollController.$inject = ['$scope'];
+        InfiniteScrollController.$inject = ['$scope', '$rootScope'];
 
-        function InfiniteScrollController($scope) {
-            var vm  = this;
+        function InfiniteScrollController($scope, $rootScope) {
+            // var vm  = this;
 
             $scope.getPosts = getPosts;
-            vm.rawPosts = angular.copy($scope.posts);
-            vm.page  = 1;
-            vm.count = 15;
+            $scope.rawPosts = angular.copy($scope.posts);
+            $scope.page  = 1;
+            $scope.count = 15;
 
-            vm.$onInit = function () {
+            this.$onInit = function () {console.log('m here')
                 $scope.getPosts();
             }
 
             function getPosts() {
-                vm.dposts = vm.rawPosts.slice(0,(vm.page * vm.count));
-                console.log('LENGTH: ' + vm.dposts.length);
-                console.log(vm.dposts, vm.rawPosts);
-                ++vm.page;
+                $scope.dposts = $scope.rawPosts.slice(0,($scope.page * $scope.count));
+                console.log('LENGTH: ' + $scope.dposts.length);
+                console.log($scope.dposts, $scope.rawPosts);
+                ++$scope.page;
             }
         }
     }
