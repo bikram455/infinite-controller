@@ -1,0 +1,5 @@
+.posts ul{list-style: none}
+.post{padding: 5px; display: block}
+.post label{color: #000000}
+.post-head{font-size: 18px; color: #00aa88}
+.post-body{ font-size: 14px;}
